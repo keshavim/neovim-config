@@ -1,5 +1,6 @@
 
 
+require("keshavi.plugins.lsp")
 require("keshavi.plugins.telescope")
 require("keshavi.plugins.treesitter")
 require("keshavi.plugins.theme")
