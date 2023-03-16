@@ -1,5 +1,5 @@
 require("keshavi.packer")
-require("keshavi.remaps")
-require("keshavi.sets")
+require("keshavi.keymap")
+require("keshavi.configs")
 require("keshavi.plugins")
 

@@ -1,7 +1,6 @@
 local options = {
   backup = false,                          -- creates a backup file
-  clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
-  cmdheight = 2,                           -- more space in the neovim command line for displaying messages
+  cmdheight = 1,                           -- more space in the neovim command line for displaying messages
   fileencoding = "utf-8",                  -- the encoding written to a file
   hlsearch = false,                         -- highlight all matches on previous search pattern
   incsearch = true,
@@ -42,3 +41,5 @@ for k, v in pairs(options) do
 end
 
 vim.opt.iskeyword:append "-"                           -- hyphenated words recognized by searches
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
