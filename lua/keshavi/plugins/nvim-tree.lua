@@ -67,4 +67,4 @@ nvim_tree.setup {
   },
 }
 
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
+vim.cmd('autocmd! bufenter * if ((winnr("$") == 1) && (&filetype == "nvimtree")) | q | endif')   

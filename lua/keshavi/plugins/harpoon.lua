@@ -1,10 +1,16 @@
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
-vim.keymap.set("n", "<leader>ha", mark.add_file, {})
-vim.keymap.set("n", "<leader>hm", ui.toggle_quick_menu, {})
+--may mofe this to keybindings later
 
-vim.keymap.set("n", "<leader>h1", function() ui.nav_file(1) end, {})
-vim.keymap.set("n", "<leader>h2", function() ui.nav_file(2) end, {})
-vim.keymap.set("n", "<leader>h3", function() ui.nav_file(3) end, {})
-vim.keymap.set("n", "<leader>h4", function() ui.nav_file(4) end, {})
+require("which-key").register({
+  h = {
+    name = "harpoon",
+    ["a"] = {mark.add_file, "add file"},
+    ["m"] = {ui.toggle_quick_menu,"toggle_quick_menu"},
+    ["1"] = { function() ui.nav_file(1) end,"nav_file1"},
+    ["2"] = { function() ui.nav_file(2) end,"nav_file2"},
+    ["3"] = { function() ui.nav_file(3) end,"nav_file3"},
+    ["4"] = { function() ui.nav_file(4) end,"nav_file4"}
+  }
+}, {prefix = "<leader>"}) 

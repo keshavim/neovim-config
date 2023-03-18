@@ -51,3 +51,5 @@ local ncdu = Terminal:new({cmd ="ncdu", hidden = true})
 function _NCDU_TOGGLE()
 	ncdu:toggle()
 end
+
+  
