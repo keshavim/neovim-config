@@ -36,7 +36,6 @@ packer.init({
 --[[ possible future plugins, too lazy to configer them right now
 -- onsails/lspkind-nvim
 -- nvim-telescope/telescope-project.nvim
--- BurntSushi/ripgrep
 -- nvim-telescope/telescope-bibtex.nvim
 -- HiPhish/nvim-ts-rainbow2
 -- folke/zen-mode.nvim
@@ -46,7 +45,6 @@ packer.init({
 -- ahmedkhalf/project.nvim
 -- akinsho/bufferline.nvim
 -- SmiteshP/nvim-navic
--- rcarriga/nvim-dap-ui
 -- Saecki/crates.nvim
 -- RRethy/vim-illuminate
 -- lukas-reineke/indent-blankline.nvim
@@ -97,7 +95,8 @@ return packer.startup(function(use)
     }
   }
   use {'simrat39/rust-tools.nvim'}
-  use {'mfussenegger/nvim-dap'}
+  use {"folke/neodev.nvim"}
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   use { 'numToStr/Comment.nvim' }
   use { 'lewis6991/gitsigns.nvim' }
   use { 'kyazdani42/nvim-tree.lua' }

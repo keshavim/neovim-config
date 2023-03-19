@@ -37,24 +37,24 @@ map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 -- Resize with arrows
-map("n", "<C-Up>", ":resize -2<CR>")
 map("n", "<C-Down>", ":resize +2<CR>")
+map("n", "<C-Up>", ":resize -2<CR>")
 map("n", "<C-Left>", ":vertical resize +2<CR>")
 map("n", "<C-Right>", ":vertical resize -2<CR>")
 
--- Navigate buffers
-map("n", "<S-l>", ":bnext<CR>")
 map("n", "<S-h>", ":bprevious<CR>")
+map("n", "<S-l>", ":bnext<CR>")
+-- Navigate buffers
+map("n", "<A-j>", "<esc>:m .+1<CR>==")
+map("n", "<A-k>", "<esc>:m .-2<CR>==")
 
-map("n", "<A-j>", ":m .+1<CR>==gi<ESC>")
-map("n", "<A-k>", ":m .-2<CR>==gi<ESC>")
 
 --Visual
-map("v", "p", [["_dP]])
 --paste without yanking
+map("v", "p", [["_dP]])
+map("v", "<A-j>", ":m '>+1<CR>gv=gv")
 --move lines
-map("v", "<A-j>", ":m '>+1<CR>gv-gv")
-map("v", "<A-k>", ":m '<-2<CR>gv-gv")
+map("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
 -- Stay in indent mode
 map("v", "<", "<gv")
@@ -71,7 +71,7 @@ map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
 map("n", "<leader>tl", "<cmd>lua _LAZYGIT_TOGGLE()<cr>")
 map("n", "<leader>th", "<cmd>lua _HTOP_TOGGLE()<cr>")
 map("n", "<leader>tn", "<cmd>lua _NCDU_TOGGLE()<cr>")
-wk.register({["<leader>t"] = {name = "Terminals"}})
+wk.register({ ["<leader>t"] = { name = "Terminals" } })
 
 wk.register({
   s = { '<cmd>so<cr>', "Source file" },
@@ -80,11 +80,19 @@ wk.register({
   f = {
     name = "Telescope",
     f = { builtin.find_files, "Find Files" },
+    o = { builtin.old_files, "Opened Files" },
     g = { builtin.git_files, "Find Git Files" },
-    s = { function()
-      builtin.grep_string({ search = vim.fn.input("Grep > ") })
-    end, "Search Files" },
     h = { builtin.help_tags, "Help Tags" },
+    k = { builtin.keymaps, "KeyMap List" },
+    m = { builtin.man_pages, "Man Pages List"},
+    d = { builtin.diagnostics, "Diagnostics List" },
+    s = { function()
+      builtin.grep_string({ search = vim.fn.input("Grep > "), grep_open_files = true })
+    end, "Search Files" },
+    S = { builtin.live_grep, "Search Directory Live" },
+    c = { function()
+      builtin.colorscheme({ enable_preview = true })
+    end, "colorschemes List" }
   }, -- f end
 }, { prefix = "<leader>" })
 
