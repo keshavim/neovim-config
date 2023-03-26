@@ -1,5 +1,6 @@
 
 
+require("keshavi.plugins.which-key")
 require("keshavi.plugins.telescope")
 require("keshavi.plugins.treesitter")
 require("keshavi.plugins.theme")
@@ -10,6 +11,7 @@ require("keshavi.plugins.terminal")
 require("keshavi.plugins.dap")
 require("keshavi.plugins.nvim-tree")
 require("keshavi.plugins.autopairs")
-require("keshavi.plugins.which-key")
 --do last or before the dap
+require("keshavi.plugins.cmp")
 require("keshavi.plugins.lsp")
+require('keshavi.plugins.folds')

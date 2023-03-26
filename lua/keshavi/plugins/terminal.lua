@@ -1,5 +1,5 @@
 require("toggleterm").setup({
-  size = 20,
+  size = 40,
   open_mapping = [[<c-\>]],
   hide_numbers = true,
   shade_filetypes = {},
@@ -8,7 +8,7 @@ require("toggleterm").setup({
   start_in_insert = true,
   insert_mappings = true,
   persist_size = true,
-  direction = "float",
+  direction = "vertical",
   close_on_exit = true,
   shell = vim.o.shell,
   float_opts = {
@@ -20,9 +20,10 @@ require("toggleterm").setup({
     },
   },
 })
+
 --movement with other terminal types
 function _G.set_terminal_keymaps()
-  local opts = {noremap = true}
+  local opts = { noremap = true }
   vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
   vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
   vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
@@ -30,26 +31,25 @@ function _G.set_terminal_keymaps()
   vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
   vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
 end
+
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 
 
 local Terminal = require("toggleterm.terminal").Terminal
 
-local lazygit = Terminal:new({cmd ="lazygit", hidden = true})
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 function _LAZYGIT_TOGGLE()
-	lazygit:toggle()
+  lazygit:toggle()
 end
 
-local htop = Terminal:new({cmd ="htop", hidden = true})
+local htop = Terminal:new({ cmd = "htop", hidden = true })
 function _HTOP_TOGGLE()
-	htop:toggle()
+  htop:toggle()
 end
 
-local ncdu = Terminal:new({cmd ="ncdu", hidden = true})
+local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
 
 function _NCDU_TOGGLE()
-	ncdu:toggle()
+  ncdu:toggle()
 end
-
-  

@@ -1,0 +1,9 @@
+{
+    "workspace.checkThirdParty": false,
+    "workspace.library": [
+        "/home/keshavi/.local/share/nvim/site/pack/packer/start/neodev.nvim/types/stable",
+        "/usr/share/nvim/runtime/lua",
+        "/home/keshavi/.local/share/nvim/site/pack/packer/start/nvim-dap-ui/lua",
+        "/home/keshavi/.config/nvim/lua"
+    ]
+}
