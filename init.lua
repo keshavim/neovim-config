@@ -1,4 +1,1 @@
-require("keshavi")
-
-
-
+require("config")
