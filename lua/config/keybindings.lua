@@ -12,7 +12,15 @@ map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-map("i", "kj", "<Esc>:w<CR>", { desc = "escape insert and save" })
+map("i", "kj", function()
+  local cant_modify = vim.bo.readonly or not vim.bo.modifiable
+  if cant_modify then
+    vim.api.nvim_input("<Esc>")
+  else
+    vim.api.nvim_input("<Esc>")
+    vim.cmd("write")
+  end
+end, { desc = "escape insert and save" })
 
 map("i", "<Tab>", function()
   local col = vim.fn.col(".") - 1
@@ -24,7 +32,7 @@ map("i", "<Tab>", function()
   end
 end, { expr = true })
 
-map("n", "<leader><leader>e", ":e $MYVIMRC<CR>:Neotree<CR>", { desc = "open config directory" })
+map("n", "<leader><leader>e", ":e $MYVIMRC<CR>", { desc = "open config directory" })
 map("n", "<Leader><leader>s", ":so %<CR>", { desc = "source current files" })
 map("n", "<leader><leader>f", ":Neotree<CR>", { desc = "open file explorer" })
 map("n", "<leader><leader>w", ":w<CR>", { desc = "savefile" })
@@ -46,6 +54,9 @@ map("n", "<S-h>", ":bprevious<CR>", { desc = "previous buffer" })
 map("n", "<S-l>", ":bnext<CR>", { desc = "next buffer" })
 map("n", "<A-j>", "<esc>:m .+1<CR>==", { desc = "move line down" })
 map("n", "<A-k>", "<esc>:m .-2<CR>==", { desc = "move line up" })
+
+map("n", "<A-h>", "0", { desc = "move to bottom window" })
+map("n", "<A-l>", "$", { desc = "move to top window" })
 
 map("n", "<C-j>", "<C-w>j", { desc = "move to bottom window" })
 map("n", "<C-k>", "<C-w>k", { desc = "move to top window" })
